@@ -63,7 +63,7 @@ do
 		Description = "Run 4 Freedom (Noclips through walls)",
 		Callback = function()
 			for _, Walls in pairs(game.Workspace:GetDescendants()) do
-				if string.find(Walls.Name:lower(), "Wall") then
+				if string.find(Walls.Name:lower(), "wall") or string.find(Walls.Name:lower(), "WALL") then
 					Walls:Destroy()
 				end
 			end
