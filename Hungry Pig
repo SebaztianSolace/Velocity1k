@@ -75,7 +75,7 @@ do
 		Description = "Slider that changes ur speed",
 		Default = 16,
 		Min = 16,
-		Max = 50,
+		Max = 230,
 		Rounding = 0.01,
 		Callback = function(Value)
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Value
