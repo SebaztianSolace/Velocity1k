@@ -37,7 +37,7 @@ do
 			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = -5
 		end
 	})
---[[
+	
 	Tabs.Home:AddParagraph({
 		Title = "Welcome, ".. game.Players.LocalPlayer.DisplayName,
 		Content = " "
@@ -50,7 +50,7 @@ do
 		Title = "Default USer: ".. game.Players.LocalPlayer.Name,
 		Content = " "
 	})
-	]]
+	
 	for _, Pig in pairs(game.Workspace:GetDescendants()) do
 		if Pig:IsA("Model") and string.find(Pig.Name:lower(), "enemy") then
 			Tabs.Teleport:AddButton({
@@ -78,6 +78,11 @@ do
 			end
 		end
 	})
+
+	game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").HipHeight = 23
+	game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").CameraOffset = Vector3.new(0,-23,0)
+	game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"):WaitForChild("RootJoint").C0 = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"):WaitForChild("RootJoint").C0 + Vector3.new(0,-23,0)
+
 	
 	Tabs.Main:AddToggle("GodToggle", {
 		Title = "God-Mode",
