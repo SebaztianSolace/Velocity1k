@@ -2,6 +2,7 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
+--VV
 
 local Window = Fluent:CreateWindow({
 	Title = "Velocity1k | V0.1.3 | Furry Infection",
@@ -93,7 +94,7 @@ do
 					end
 				end)
 			else
-				Options.FLINGToggle:SetValue(true)
+				Options.FLINGToggle:SetValue(false)
 				Clipon = false
 			end
 		end
