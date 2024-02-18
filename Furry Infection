@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V0.2.5 | Furry Infection",
+	Title = "Velocity1k | V0.2.6 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -85,15 +85,13 @@ do
 				Clipon = true
 				game:GetService("RunService").Heartbeat:Connect(function()
 					if Clipon then
-						for a, b in pairs(workspace:GetChildren()) do
-							if b.Name == game.Players.LocalPlayer.Name then
-								for i, v in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
-									if v:IsA("BasePart") or v:IsA("Part") then
-										v.CanCollide = false
-									end
-									game.Players.LocalPlayer.Character.Head.BreathPart.CanCollide = false
+						for a, b in pairs(game.Players:GetChildren()) do
+							for i, v in pairs(b.Character):GetChildren()) do
+								if v:IsA("BasePart") or v:IsA("Part") then
+									v.CanCollide = false
 								end
-							end 
+								game.Players.LocalPlayer.Character.Head.BreathPart.CanCollide = false
+							end
 						end
 					end
 				end)
@@ -106,7 +104,7 @@ do
 
 	Tabs.Main:AddToggle("FLINGToggle", {
 		Title = "FLING",
-		Description = "Spins at 90000",
+		Description = "Fling Thoses Foes",
 		Callback = function(Value)
 			if Value == true then
 				local Spin = Instance.new("BodyAngularVelocity")
