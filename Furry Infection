@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V0.1.3 | Furry Infection",
+	Title = "Velocity1k | V0.2.3 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -38,7 +38,7 @@ do
 			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = -5
 		end
 	})
-	
+
 	Tabs.Home:AddParagraph({
 		Title = "Welcome, ".. game.Players.LocalPlayer.DisplayName,
 		Content = " "
@@ -74,21 +74,21 @@ do
 			end
 		end
 	})
-	
+
 	local Clipon = false
-	
+
 	Tabs.Main:AddToggle("NoclipToggle", {
 		Title = "Noclip",
 		Description = "Look Ma! I can Phase Through Walls!",
 		Callback = function(Value)
 			if Value then
 				Clipon = true
-				game:GetService("RunService").Stepped:Connect(function()
+				game:GetService("RunService").Heartbeat:Connect(function()
 					if Clipon then
 						for a, b in pairs(workspace:GetChildren()) do
 							if b.Name == game.Players.LocalPlayer.Name then
 								for i, v in pairs(workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
-									if v:IsA("BasePart") then
+									if v:IsA("BasePart") or v:IsA("Part") then
 										v.CanCollide = false
 									end end end end
 					end
@@ -159,7 +159,7 @@ do
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").HipHeight = Value
 		end
 	})
-	
+
 	local FOVSlider = Tabs.Main:AddSlider("FOVSlider", {
 		Title = "FOV",
 		Description = "Slider that changes ur FOV",
