@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V0.2.4 | Furry Infection",
+	Title = "Velocity1k | V0.2.5 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -91,7 +91,7 @@ do
 									if v:IsA("BasePart") or v:IsA("Part") then
 										v.CanCollide = false
 									end
-									game.Players.LocalPlayer.PlayerGui["Cold Breath [STARTERGUI]"].BreathPart.CanCollide = false
+									game.Players.LocalPlayer.Character.Head.BreathPart.CanCollide = false
 								end
 							end 
 						end
