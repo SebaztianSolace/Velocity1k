@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V0.2.12 | Furry Infection",
+	Title = "Velocity1k | V0.2.13 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -86,11 +86,11 @@ do
 				game:GetService("RunService").Heartbeat:Connect(function()
 					if Clipon then
 						for a, b in pairs(game.Players:GetChildren()) do
-							for i, v in pairs(b.Character):GetChildren() do
+							for i, v in pairs(b.Character:GetChildren()) do
 								if v:IsA("BasePart") or v:IsA("Part") then
 									v.CanCollide = false
 								end
-								game.Players.LocalPlayer.Character.Head.BreathPart.CanCollide = false
+								b.Character.Head.BreathPart.CanCollide = false
 							end
 						end
 					end
