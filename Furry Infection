@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V0.2.13 | Furry Infection",
+	Title = "Velocity1k | V1.2.8 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -27,7 +27,7 @@ do
 	Fluent:Notify({
 		Title = "Velocity1k",
 		Content = "Thank you for using our hub!",
-		SubContent = " ", -- Optional
+		SubContent = "Love Velocity1k", -- Optional
 		Duration = 5 -- Set to nil to make the notification not disappear
 	})
 
@@ -62,15 +62,95 @@ do
 			game.Players.LocalPlayer.Character.Torso:Destroy()
 		end
 	})
+	local cs
+	local folder = Instance.new("Folder")
+	folder.Parent = game.Lighting
 
 	Tabs.Main:AddToggle("GodToggle", {
-		Title = "Sorta God?",
-		Description = "Its like GodMode but if someone hits u, u die but doesn't show",
+		Title = "Masked",
+		Description = "Invisible Might be Detected But I recommend it in Small Server",
 		Callback = function(Value)
 			if Value == true then
-				settings():GetService("NetworkSettings").IncomingReplicationLag = 1234
+				game.Players.LocalPlayer.Character.Animate.Enabled = false
+
+				local rnd1 = Instance.new('Part')
+				local aw8 = 10
+				local rnd3 = 10
+				local us2 = 10
+				local rnd5 = false
+				local rnd6 = true
+				local rnd7 = math.random(-5, 5)
+				local rnd8 = math.random(-5, 5)
+				local rnd9 = math.random(-5, 5)
+				local rnd10 = Color3.new(0, 0, 0)
+
+				-- Randomized function
+				local function createRandomizedSphere(parent)
+					local ch2 = Instance.new('Part')
+					ch2.Name = 'ch2'
+					ch2.Size = Vector3.new(aw8, rnd3, us2)
+					ch2.Anchored = rnd5
+					ch2.CanCollide = false
+					ch2.Anchored = true
+					ch2.Color = rnd10
+					ch2.Material = Enum.Material.SmoothPlastic
+					ch2.Transparency = 5
+					ch2.Parent = parent
+					rnd1.Parent = folder
+					rnd1.CFrame = game.Players.LocalPlayer.Character.Head.CFrame
+					rnd1.Anchored = true
+					rnd1.CanCollide = false
+					game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(900000000,9000000,9000000)
+					wait(0.5)
+					ch2.CFrame = parent.CFrame * CFrame.new(0, 20, 0)
+					wait(0.5)
+			--[[for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				local a
+				if v:IsA("Part") or v:IsA("Accessory") or v:IsA("Shirt") or v:IsA("Pants") or v:IsA("MeshPart") then
+					a = v:Clone()
+					a.Parent = folder
+					if a:IsA("Part") or a:IsA("MeshPart") then			
+						a.Anchored = true
+						for _, part in pairs(a:GetDescendants()) do
+							if part:IsA("Motor6D") or part:IsA("Weld") then
+								part:Destroy()
+							end
+						end	
+					end
+
+					if a:IsA("Accessory") then
+						a.Handle.Anchored = true
+						for _, part in pairs(a:GetDescendants()) do
+							if part:IsA("Motor6D") or part:IsA("Weld") then
+								part:Destroy()
+							end
+						end	
+					end
+				end
+			end]]
+					local kd2 = Instance.new('Weld')
+					kd2.Part0 = parent
+					kd2.Part1 = ch2
+					kd2.Parent = parent
+					ch2.Anchored = false
+					wait(0.5)
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = rnd1.CFrame
+					return ch2
+				end
+
+				local dw2 = game.Players.LocalPlayer.Character
+				local rs4 = dw2:WaitForChild('HumanoidRootPart')
+				cs = createRandomizedSphere(rs4)
 			else
-				settings():GetService("NetworkSettings").IncomingReplicationLag = 0
+				cs:Destroy()
+				cs = nil
+				game.Players.LocalPlayer.Character.Animate.Enabled = true
+				for i,v in pairs(folder:GetDescendants()) do
+					if v:IsA("Part") then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+					end	
+					v:Destroy()
+				end
 			end
 		end
 	})
@@ -155,7 +235,7 @@ do
 		Description = "Slider that changes ur Height",
 		Default = 0,
 		Min = 0,
-		Max = 7,
+		Max = 7.01,
 		Rounding = 0.1,
 		Callback = function(Value)
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").HipHeight = Value
@@ -167,7 +247,7 @@ do
 		Description = "Slider that changes ur FOV",
 		Default = game.Workspace.CurrentCamera.FieldOfView,
 		Min = 70,
-		Max = 120,
+		Max = 100,
 		Rounding = 1,
 		Callback = function(Value)
 			game.Workspace.CurrentCamera.FieldOfView = Value
@@ -355,5 +435,6 @@ game["Run Service"].Heartbeat:Connect(function()
 	if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health == 0 then
 		--Options.FELAGToggle:SetValue(false)
 		Options.FullBrightToggle:SetValue(false)
+		Options.GodToggle:SetValue(false)
 	end
 end)
