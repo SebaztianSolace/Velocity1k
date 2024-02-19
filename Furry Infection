@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V1.5.11 | Furry Infection",
+	Title = "Velocity1k | V1.5.12 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -66,7 +66,7 @@ do
 	})
 	local cs = nil
 	local folder = Instance.new("Folder")
-	folder.Parent = game.Lighting
+	folder.Parent = game.Workspace
 
 	Tabs.Main:AddToggle("GodToggle", {
 		Title = "Ghost Mode",
@@ -389,6 +389,9 @@ do
 		Description = "Teleports Yourself at Spawn (RESET)",
 		Callback = function()
 			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Humanoid:Destroy()
+			game.Players.LocalPlayer.Character.Torso:Destroy()
 			game.Players.LocalPlayer.CharacterAdded:Wait()
 			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(168, 26, 56)
 		end
@@ -398,14 +401,17 @@ do
 		Description = "Teleports Yourself at Spawn (RESET)",
 		Callback = function()
 			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Humanoid:Destroy()
+			game.Players.LocalPlayer.Character.Torso:Destroy()
 			game.Players.LocalPlayer.CharacterAdded:Wait()
 			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(-145,27,154)
 		end
 	})
-	
-	
+
+
 	--TESTS--
-	
+
 	Tabs.Test:AddButton({
 		Title = "Goto lava Katana",
 		Description = "Goto This Item",
@@ -416,8 +422,6 @@ do
 						if Bat.ObjectText == "Lava Katana" then
 							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Bat.Parent.CFrame
 						end
-						
-						
 					end
 				end
 			end
