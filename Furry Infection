@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V1.2.8 | Furry Infection",
+	Title = "Velocity1k | V1.3.9 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -18,6 +18,8 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
 	Home = Window:AddTab({ Title = "Home", Icon = "home" }),
 	Main = Window:AddTab({ Title = "Scripts", Icon = "file-code" }),
+	TP = Window:AddTab({ Title = "Teleports", Icon = "star" }),
+	Test = Window:AddTab({ Title = "Experimentational", Icon = "folder-open-dot" }),
 	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -100,7 +102,7 @@ do
 					rnd1.CFrame = game.Players.LocalPlayer.Character.Head.CFrame
 					rnd1.Anchored = true
 					rnd1.CanCollide = false
-					game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(900000000,9000000,9000000)
+					game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(9000000,90000,90000)
 					wait(0.5)
 					ch2.CFrame = parent.CFrame * CFrame.new(0, 20, 0)
 					wait(0.5)
@@ -381,6 +383,56 @@ do
 		print("Input updated:", Input.Value)
 	end)
 ]]--
+
+
+
+
+
+
+	Tabs.TP:AddParagraph({
+		Title = "Only Reason why we Make Your Character To Reset is Make the Chances Of Detection Lower".. game.Players.LocalPlayer.Name,
+		Content = "It might do nothing but Its a Good Featured"
+	})
+
+	Tabs.TP:AddButton({
+		Title = "Goto Spawn",
+		Description = "Teleports Yourself at Spawn (RESET)",
+		Callback = function()
+			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			game.Players.LocalPlayer.CharacterAdded:Wait()
+			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(168, 26, 56)
+		end
+	})
+	Tabs.TP:AddButton({
+		Title = "Goto Cafe",
+		Description = "Teleports Yourself at Spawn (RESET)",
+		Callback = function()
+			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			game.Players.LocalPlayer.CharacterAdded:Wait()
+			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(-145,27,154)
+		end
+	})
+	
+	
+	--TESTS--
+	
+	local NumberBesides = 0
+	
+	Tabs.Test:AddButton({
+		Title = "Bring All Bats",
+		Description = "Gets Every Bat To you",
+		Callback = function()
+			for i,Bat in pairs(game.Workspace:GetDescendants()) do
+				wait(0.03)
+				if Bat.Name == "Bat" then
+					if Bat:IsA("Part") then
+						Bat.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(NumberBesides,0,0)
+						NumberBesides = NumberBesides + 1
+					end
+				end
+			end
+		end
+	})
 end
 
 
