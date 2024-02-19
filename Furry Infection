@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V1.6.14 | Furry Infection",
+	Title = "Velocity1k | V1.6.16 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -452,7 +452,7 @@ do
 		end
 	})
 
-	Tabs.Main:AddToggle("GrabToggle", {
+	Tabs.Test:AddToggle("GrabToggle", {
 		Title = "Grab Closest Player",
 		Description = "Only Works for transfured",
 		Callback = function(Value)
@@ -480,12 +480,12 @@ do
 			end)
 		end
 	})
-	Tabs.Main:AddToggle("DieInfectedToggle", {
+	Tabs.Test:AddToggle("DieInfectedToggle", {
 		Title = "Die When Transfured",
 		Description = "Resets your character when you get infected",
 		Callback = function(Value)
 			game["Run Service"].Heartbeat:Connect(function()
-				if Value then
+				if Value == true then
 					if game.Players.LocalPlayer.Team.Name == "Transfured" then
 						game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health = -math.huge
 						wait(0.1)
