@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V1.3.9 | Furry Infection",
+	Title = "Velocity1k | V1.4.10 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -19,7 +19,7 @@ local Tabs = {
 	Home = Window:AddTab({ Title = "Home", Icon = "home" }),
 	Main = Window:AddTab({ Title = "Scripts", Icon = "file-code" }),
 	TP = Window:AddTab({ Title = "Teleports", Icon = "star" }),
-	Test = Window:AddTab({ Title = "Experimentational", Icon = "folder-open-dot" }),
+	Test = Window:AddTab({ Title = "Experimentational", Icon = "hexagon" }),
 	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -64,16 +64,16 @@ do
 			game.Players.LocalPlayer.Character.Torso:Destroy()
 		end
 	})
-	local cs
+	local cs = nil
 	local folder = Instance.new("Folder")
 	folder.Parent = game.Lighting
 
 	Tabs.Main:AddToggle("GodToggle", {
-		Title = "Masked",
-		Description = "Invisible Might be Detected But I recommend it in Small Server",
+		Title = "Ghost Mode",
+		Description = "Ghost Mode Haunt Your Foes without them knowin",
 		Callback = function(Value)
 			if Value == true then
-				game.Players.LocalPlayer.Character.Animate.Enabled = false
+				game.Players.LocalPlayer.Character.Animate.Enabled = true
 
 				local rnd1 = Instance.new('Part')
 				local aw8 = 10
@@ -102,10 +102,10 @@ do
 					rnd1.CFrame = game.Players.LocalPlayer.Character.Head.CFrame
 					rnd1.Anchored = true
 					rnd1.CanCollide = false
-					game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(9000000,90000,90000)
-					wait(0.5)
+					--game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,9000,0)
+					wait(0.1)
 					ch2.CFrame = parent.CFrame * CFrame.new(0, 20, 0)
-					wait(0.5)
+					wait(0.1)
 			--[[for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 				local a
 				if v:IsA("Part") or v:IsA("Accessory") or v:IsA("Shirt") or v:IsA("Pants") or v:IsA("MeshPart") then
@@ -135,7 +135,7 @@ do
 					kd2.Part1 = ch2
 					kd2.Parent = parent
 					ch2.Anchored = false
-					wait(0.5)
+					wait(0.1)
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = rnd1.CFrame
 					return ch2
 				end
@@ -143,16 +143,6 @@ do
 				local dw2 = game.Players.LocalPlayer.Character
 				local rs4 = dw2:WaitForChild('HumanoidRootPart')
 				cs = createRandomizedSphere(rs4)
-			else
-				cs:Destroy()
-				cs = nil
-				game.Players.LocalPlayer.Character.Animate.Enabled = true
-				for i,v in pairs(folder:GetDescendants()) do
-					if v:IsA("Part") then
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-					end	
-					v:Destroy()
-				end
 			end
 		end
 	})
@@ -193,7 +183,7 @@ do
 				Spin.Name = "Spinning"
 				Spin.Parent = game.Players.LocalPlayer.Character.Torso
 				Spin.MaxTorque = Vector3.new(0, math.huge, 0)
-				Spin.AngularVelocity = Vector3.new(0,90000,0)
+				Spin.AngularVelocity = Vector3.new(0,900000,0)
 				Options.NoclipToggle:SetValue(true)
 			else
 				if game.Players.LocalPlayer.Character.Torso:FindFirstChild("Spinning") then
@@ -423,7 +413,6 @@ do
 		Description = "Gets Every Bat To you",
 		Callback = function()
 			for i,Bat in pairs(game.Workspace:GetDescendants()) do
-				wait(0.03)
 				if Bat.Name == "Bat" then
 					if Bat:IsA("Part") then
 						Bat.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(NumberBesides,0,0)
@@ -431,6 +420,7 @@ do
 					end
 				end
 			end
+			NumberBesides = 0
 		end
 	})
 end
