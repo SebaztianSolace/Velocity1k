@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V1.4.10 | Furry Infection",
+	Title = "Velocity1k | V1.5.11 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(580, 420),
@@ -406,21 +406,53 @@ do
 	
 	--TESTS--
 	
-	local NumberBesides = 0
-	
 	Tabs.Test:AddButton({
-		Title = "Bring All Bats",
-		Description = "Gets Every Bat To you",
+		Title = "Goto lava Katana",
+		Description = "Goto This Item",
 		Callback = function()
 			for i,Bat in pairs(game.Workspace:GetDescendants()) do
 				if Bat.Name == "Bat" then
-					if Bat:IsA("Part") then
-						Bat.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(NumberBesides,0,0)
-						NumberBesides = NumberBesides + 1
+					if Bat:IsA("ProximityPrompt") then
+						if Bat.ObjectText == "Lava Katana" then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Bat.Parent.CFrame
+						end
+						
+						
 					end
 				end
 			end
-			NumberBesides = 0
+		end
+	})
+	Tabs.Test:AddButton({
+		Title = "Goto Bat",
+		Description = "Goto This Item",
+		Callback = function()
+			for i,Bat in pairs(game.Workspace:GetDescendants()) do
+				if Bat.Name == "Bat" then
+					if Bat:IsA("ProximityPrompt") then
+						if Bat.ObjectText == "Bat" then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Bat.Parent.CFrame
+							break
+						end
+					end
+				end
+			end
+		end
+	})
+	Tabs.Test:AddButton({
+		Title = "Goto Neon Bat",
+		Description = "Goto This Item",
+		Callback = function()
+			for i,Bat in pairs(game.Workspace:GetDescendants()) do
+				if Bat.Name == "Bat" then
+					if Bat:IsA("ProximityPrompt") then
+						if Bat.ObjectText == "Neon Bat" then
+							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Bat.Parent.CFrame
+							break
+						end
+					end
+				end
+			end
 		end
 	})
 end
