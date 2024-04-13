@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V1.7.16 | Furry Infection",
+	Title = "ArcticX | V1.7.17 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(340, 210),
@@ -454,7 +454,7 @@ do
 		Title = "Die When Transfured",
 		Description = "Resets your character when you get infected",
 		Callback = function(Value)
-		TFDEAD = Value
+			TFDEAD = Value
 			game["Run Service"].Heartbeat:Connect(function()
 				if TFDEAD == true then
 					if game.Players.LocalPlayer.Team.Name == "Transfured" then
@@ -479,33 +479,32 @@ do
 	local allowed = false
 
 	Dropdown:OnChanged(function(Value)
-	if allowed == true then
-		if Value == "Default (white)" then
-			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
-			wait(0.1)
-			game.Players.LocalPlayer.Character.Humanoid:Destroy()
-			game.Players.LocalPlayer.Character.Torso:Destroy()
-			game.Players.LocalPlayer.CharacterAdded:Wait()
-			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(214,27,156)
+		if allowed == true then
+			if Value == "Default (white)" then
+				game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+				wait(0.1)
+				game.Players.LocalPlayer.Character.Humanoid:Destroy()
+				game.Players.LocalPlayer.Character.Torso:Destroy()
+				game.Players.LocalPlayer.CharacterAdded:Wait()
+				game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(214,27,156)
 			elseif Value == "Cone (Orange)" then
-			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
-			wait(0.1)
-			game.Players.LocalPlayer.Character.Humanoid:Destroy()
-			game.Players.LocalPlayer.Character.Torso:Destroy()
-			game.Players.LocalPlayer.CharacterAdded:Wait()
-			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(214,27,37)
+				game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+				wait(0.1)
+				game.Players.LocalPlayer.Character.Humanoid:Destroy()
+				game.Players.LocalPlayer.Character.Torso:Destroy()
+				game.Players.LocalPlayer.CharacterAdded:Wait()
+				game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(214,27,37)
 			elseif Value == "Tiger Shark (Blue)" then
-			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
-			wait(0.1)
-			game.Players.LocalPlayer.Character.Humanoid:Destroy()
-			game.Players.LocalPlayer.Character.Torso:Destroy()
-			game.Players.LocalPlayer.CharacterAdded:Wait()
-			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(211,28,194)
+				game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+				wait(0.1)
+				game.Players.LocalPlayer.Character.Humanoid:Destroy()
+				game.Players.LocalPlayer.Character.Torso:Destroy()
+				game.Players.LocalPlayer.CharacterAdded:Wait()
+				game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(211,28,194)
 			end
 		end
-		end
-	end)
-	
+end)
+
 	--[[local MultiDropdown = Tabs.Test:AddDropdown("MultiDropdown", {
 		Title = "Dropdown",
 		Description = "You can select multiple values.",
