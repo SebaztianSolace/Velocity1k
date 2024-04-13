@@ -5,10 +5,10 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "Velocity1k | V1.6.16 | Furry Infection",
+	Title = "ArcticX | V1.7.16 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
-	Size = UDim2.fromOffset(580, 420),
+	Size = UDim2.fromOffset(340, 210),
 	Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
 	Theme = "Rose",
 	MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
@@ -27,9 +27,9 @@ local Options = Fluent.Options
 
 do
 	Fluent:Notify({
-		Title = "Velocity1k",
+		Title = "ArcticX",
 		Content = "Thank you for using our hub!",
-		SubContent = "Love Velocity1k", -- Optional
+		SubContent = "Love ArcticX", -- Optional
 		Duration = 5 -- Set to nil to make the notification not disappear
 	})
 
@@ -38,6 +38,17 @@ do
 		Description = "Kills Your character",
 		Callback = function()
 			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = -5
+		end
+	})
+
+	Tabs.Home:AddButton({
+		Title = "Hard Reset",
+		Description = "Removes ur Torso and Humanoid",
+		Callback = function()
+			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Humanoid:Destroy()
+			game.Players.LocalPlayer.Character.Torso:Destroy()
 		end
 	})
 
@@ -54,16 +65,6 @@ do
 		Content = " "
 	})
 
-	Tabs.Main:AddButton({
-		Title = "Hard Reset",
-		Description = "Removes ur Torso and Humanoid",
-		Callback = function()
-			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
-			wait(0.1)
-			game.Players.LocalPlayer.Character.Humanoid:Destroy()
-			game.Players.LocalPlayer.Character.Torso:Destroy()
-		end
-	})
 	local cs = nil
 	local folder = Instance.new("Folder")
 	folder.Parent = game.Workspace
@@ -153,7 +154,7 @@ do
 		Title = "Noclip",
 		Description = "Look Ma! I can Phase Through Walls!",
 		Callback = function(Value)
-			if Value then
+			if Value == true then
 				Clipon = true
 				game:GetService("RunService").Heartbeat:Connect(function()
 					if Clipon then
@@ -183,7 +184,7 @@ do
 				Spin.Name = "Spinning"
 				Spin.Parent = game.Players.LocalPlayer.Character.Torso
 				Spin.MaxTorque = Vector3.new(0, math.huge, 0)
-				Spin.AngularVelocity = Vector3.new(0,900000,0)
+				Spin.AngularVelocity = Vector3.new(0,99999,0)
 				Options.NoclipToggle:SetValue(true)
 			else
 				if game.Players.LocalPlayer.Character.Torso:FindFirstChild("Spinning") then
@@ -196,12 +197,12 @@ do
 
 	Tabs.Main:AddToggle("FullBrightToggle", {
 		Title = "Full Bright",
-		Description = "like xray but light",
+		Description = "You get the PointLight.. Get it?",
 		Callback = function(Value)
 			if Value then
 				local lgh = Instance.new("PointLight")
 				lgh.Range = math.huge
-				lgh.Brightness = 3
+				lgh.Brightness = 2.5
 				lgh.Parent = game.Players.LocalPlayer.Character.Head
 			else
 				if game.Players.LocalPlayer.Character:WaitForChild("Head"):FindFirstChild("PointLight") then
@@ -226,8 +227,8 @@ do
 		Title = "Hip Height Changer",
 		Description = "Slider that changes ur Height",
 		Default = 0,
-		Min = 0,
-		Max = 7.01,
+		Min = 0.0001,
+		Max = 4.0100,
 		Rounding = 0.1,
 		Callback = function(Value)
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").HipHeight = Value
@@ -239,7 +240,7 @@ do
 		Description = "Slider that changes ur FOV",
 		Default = game.Workspace.CurrentCamera.FieldOfView,
 		Min = 70,
-		Max = 100,
+		Max = 120,
 		Rounding = 1,
 		Callback = function(Value)
 			game.Workspace.CurrentCamera.FieldOfView = Value
@@ -247,42 +248,10 @@ do
 	})
 
 --[[
-	local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
-		Title = "Dropdown",
-		Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
-		Multi = false,
-		Default = 1,
-	})
-
-	Dropdown:SetValue("four")
-
-	Dropdown:OnChanged(function(Value)
-		print("Dropdown changed:", Value)
-	end)
+	
 
 
 
-	local MultiDropdown = Tabs.Main:AddDropdown("MultiDropdown", {
-		Title = "Dropdown",
-		Description = "You can select multiple values.",
-		Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
-		Multi = true,
-		Default = {"seven", "twelve"},
-	})
-
-	MultiDropdown:SetValue({
-		three = true,
-		five = true,
-		seven = false
-	})
-
-	MultiDropdown:OnChanged(function(Value)
-		local Values = {}
-		for Value, State in next, Value do
-			table.insert(Values, Value)
-		end
-		print("Mutlidropdown changed:", table.concat(Values, ", "))
-	end)
 
 
 
@@ -412,7 +381,7 @@ do
 
 	--TESTS--
 
-	Tabs.Test:AddButton({
+	--[[Tabs.Test:AddButton({
 		Title = "Goto lava Katana",
 		Description = "Goto This Item",
 		Callback = function()
@@ -424,7 +393,7 @@ do
 			end
 
 		end
-	})
+	})]]
 	Tabs.Test:AddButton({
 		Title = "Goto Bat",
 		Description = "Goto This Item",
@@ -460,12 +429,12 @@ do
 				if game.Players.LocalPlayer.Character:FindFirstChild("Grab") then
 					local function teleportIfClose(playerToTeleportTo)
 						for _, player in pairs(game.Players:GetPlayers()) do
-							if player ~= playerToTeleportTo then
+							if player ~= game.Players.LocalPlayer then
 								local targetCharacter = playerToTeleportTo.Character
 								local currentPlayerCharacter = player.Character
 								if targetCharacter and currentPlayerCharacter then
 									local distance = (targetCharacter:FindFirstChild("HumanoidRootPart").Position - currentPlayerCharacter:FindFirstChild("HumanoidRootPart").Position).magnitude
-									if distance < 20 then
+									if distance < 6 then
 										currentPlayerCharacter:SetPrimaryPartCFrame(targetCharacter:FindFirstChild("HumanoidRootPart").CFrame)
 									end
 								end
@@ -480,12 +449,14 @@ do
 			end)
 		end
 	})
+	local TFDEAD = false
 	Tabs.Test:AddToggle("DieInfectedToggle", {
 		Title = "Die When Transfured",
 		Description = "Resets your character when you get infected",
 		Callback = function(Value)
+		TFDEAD = Value
 			game["Run Service"].Heartbeat:Connect(function()
-				if Value == true then
+				if TFDEAD == true then
 					if game.Players.LocalPlayer.Team.Name == "Transfured" then
 						game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health = -math.huge
 						wait(0.1)
@@ -495,6 +466,69 @@ do
 			end)
 		end
 	})
+
+	local Dropdown = Tabs.Test:AddDropdown("Dropdown", {
+		Title = "Transfur Types (Reset)",
+		Values = {"Default (white)", "Cone (Orange)", "Tiger Shark (Blue)", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+		Multi = false,
+		Default = 1,
+	})
+
+	--Dropdown:SetValue(nil)
+
+	local allowed = false
+
+	Dropdown:OnChanged(function(Value)
+	if allowed == true then
+		if Value == "Default (white)" then
+			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Humanoid:Destroy()
+			game.Players.LocalPlayer.Character.Torso:Destroy()
+			game.Players.LocalPlayer.CharacterAdded:Wait()
+			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(214,27,156)
+			elseif Value == "Cone (Orange)" then
+			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Humanoid:Destroy()
+			game.Players.LocalPlayer.Character.Torso:Destroy()
+			game.Players.LocalPlayer.CharacterAdded:Wait()
+			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(214,27,37)
+			elseif Value == "Tiger Shark (Blue)" then
+			game.Players.LocalPlayer.Character.Humanoid:TakeDamage(math.huge)
+			wait(0.1)
+			game.Players.LocalPlayer.Character.Humanoid:Destroy()
+			game.Players.LocalPlayer.Character.Torso:Destroy()
+			game.Players.LocalPlayer.CharacterAdded:Wait()
+			game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(211,28,194)
+			end
+		end
+		end
+	end)
+	
+	--[[local MultiDropdown = Tabs.Test:AddDropdown("MultiDropdown", {
+		Title = "Dropdown",
+		Description = "You can select multiple values.",
+		Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+		Multi = true,
+		Default = {"seven", "twelve"},
+	})
+
+	MultiDropdown:SetValue({
+		three = true,
+		five = true,
+		seven = false
+	})
+
+	MultiDropdown:OnChanged(function(Value)
+		local Values = {}
+		for Value, State in next, Value do
+			table.insert(Values, Value)
+		end
+		print("Mutlidropdown changed:", table.concat(Values, ", "))
+	end)]]
+
+
 end
 
 
@@ -528,7 +562,7 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Window:Dialog({
-	Title = "Velocity1k",
+	Title = "ArcticX",
 	Content = "Script has been loaded.",
 	Buttons = {
 		{
@@ -543,6 +577,7 @@ Window:Dialog({
 -- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
 
+allowed = true
 
 
 game["Run Service"].Heartbeat:Connect(function()
