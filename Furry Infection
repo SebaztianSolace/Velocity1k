@@ -5,10 +5,10 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V1.7.17 | Furry Infection",
+	Title = "ArcticX | V1.7.18 | Furry Infection",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
-	Size = UDim2.fromOffset(540, 340),
+	Size = UDim2.fromOffset(520, 320),
 	Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
 	Theme = "Rose",
 	MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
@@ -105,7 +105,7 @@ do
 					rnd1.CanCollide = false
 					--game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,9000,0)
 					wait(0.1)
-					ch2.CFrame = parent.CFrame * CFrame.new(0, 20, 0)
+					ch2.CFrame = parent.CFrame * CFrame.new(0, 2, 0)
 					wait(0.1)
 			--[[for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 				local a
