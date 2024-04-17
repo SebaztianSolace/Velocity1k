@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 --VV
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.1.3 | Obby Creator",
+	Title = "ArcticX | V0.2.3 | Obby Creator",
 	SubTitle = "by narpyyy",
 	TabWidth = 140,
 	Size = UDim2.fromOffset(520, 320),
@@ -44,10 +44,12 @@ do
 		Title = "Welcome, ".. game.Players.LocalPlayer.DisplayName,
 		Content = " "
 	})
+	
 	Tabs.Home:AddParagraph({
 		Title = "UserID: ".. game.Players.LocalPlayer.UserId,
 		Content = " "
 	})
+	
 	Tabs.Home:AddParagraph({
 		Title = "Default User: ".. game.Players.LocalPlayer.Name,
 		Content = " "
@@ -56,25 +58,22 @@ do
 
 
 	Tabs.Mods:AddButton({
-		Title = "Make all Part(s) Reflect 99",
+		Title = "Make all Part(s) Reflect Max",
 		Description = "Mods All Your part(s)",
 		Callback = function()
-			for _,Part in pairs(workspace:WaitForChild("Obbies"):WaitForChild("P_choX"):WaitForChild("Items"):WaitForChild("Parts"):GetChildren()) do
-				if Part:IsA("Part") then
-					local args = {
-						[1] = {
-							[1] = Part
-						},
-						[2] = false
-					}
-
-					game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetEditing"):FireServer(unpack(args))
-					
-				end
+			for _,Part in pairs(workspace:WaitForChild("Obbies"):WaitForChild(game.Players.LocalPlayer.Name):WaitForChild("Items"):WaitForChild("Parts"):GetChildren()) do
+				local args = {
+					[1] = {
+						[1] = Part
+					},
+					[2] = "Reflectance",
+					[3] = math.huge
+				}
+				game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PaintObject"):InvokeServer(unpack(args))
 			end
 			Fluent:Notify({
 				Title = "ArcticX",
-				Content = "Client Sided problems can happen so it won't look like reflection 99 but other people will see it as 99",
+				Content = "Client Sided problems so it won't look like it but it will for other ppl",
 				SubContent = " ", -- Optional
 				Duration = 5 -- Set to nil to make the notification not disappear
 			})
