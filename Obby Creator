@@ -1,0 +1,455 @@
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+--VV
+
+local Window = Fluent:CreateWindow({
+	Title = "ArcticX | V0.1.0 | Obby Creator",
+	SubTitle = "by narpyyy",
+	TabWidth = 140,
+	Size = UDim2.fromOffset(520, 320),
+	Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
+	Theme = "Rose",
+	MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+
+--Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
+local Tabs = {
+	Home = Window:AddTab({ Title = "Home", Icon = "home" }),
+	Main = Window:AddTab({ Title = "Scripts", Icon = "file-code" }),
+	Mods = Window:AddTab({ Title = "Mods", Icon = "cuboid" }),
+	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
+
+local Options = Fluent.Options
+
+do
+	Fluent:Notify({
+		Title = "ArcticX",
+		Content = "Thank you for using our hub!",
+		SubContent = "Love ArcticX", -- Optional
+		Duration = 5 -- Set to nil to make the notification not disappear
+	})
+
+	Tabs.Home:AddButton({
+		Title = "Reset",
+		Description = "Kills Your character",
+		Callback = function()
+			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = -5
+		end
+	})
+
+	Tabs.Home:AddParagraph({
+		Title = "Welcome, ".. game.Players.LocalPlayer.DisplayName,
+		Content = " "
+	})
+	Tabs.Home:AddParagraph({
+		Title = "UserID: ".. game.Players.LocalPlayer.UserId,
+		Content = " "
+	})
+	Tabs.Home:AddParagraph({
+		Title = "Default User: ".. game.Players.LocalPlayer.Name,
+		Content = " "
+	})
+
+
+
+	Tabs.Home:AddButton({
+		Title = "Reflection 99",
+		Description = "Mods the selected part",
+		Callback = function()
+			Fluent:Notify({
+				Title = "ArcticX",
+				Content = "Please Click/Tap onto a Part",
+				SubContent = " ", -- Optional
+				Duration = 5 -- Set to nil to make the notification not disappear
+			})
+			local Plr = game.Players.LocalPlayer:GetMouse()
+			Plr.Button1Down:Wait()
+			local args = {
+				[1] = {
+					[1] = Plr.Target
+				},
+				[2] = false
+			}
+
+			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SetEditing"):FireServer(unpack(args))
+			Fluent:Notify({
+				Title = "ArcticX",
+				Content = "Client Sided problems can happen so it won't look like reflection 99 but other people will see it as 99",
+				SubContent = " ", -- Optional
+				Duration = 5 -- Set to nil to make the notification not disappear
+			})
+		end
+	})
+
+
+
+
+	--[[Tabs.Main:AddToggle("GodToggle", {
+		Title = "Ghost Mode",
+		Description = "Ghost Mode Haunt Your Foes without them knowin",
+		Callback = function(Value)
+			if Value == true then
+				game.Players.LocalPlayer.Character.Animate.Enabled = true
+
+				local rnd1 = Instance.new('Part')
+				local aw8 = 10
+				local rnd3 = 10
+				local us2 = 10
+				local rnd5 = false
+				local rnd6 = true
+				local rnd7 = math.random(-5, 5)
+				local rnd8 = math.random(-5, 5)
+				local rnd9 = math.random(-5, 5)
+				local rnd10 = Color3.new(0, 0, 0)
+
+				-- Randomized function
+				local function createRandomizedSphere(parent)
+					local ch2 = Instance.new('Part')
+					ch2.Name = 'ch2'
+					ch2.Size = Vector3.new(aw8, rnd3, us2)
+					ch2.Anchored = rnd5
+					ch2.CanCollide = false
+					ch2.Anchored = true
+					ch2.Color = rnd10
+					ch2.Material = Enum.Material.SmoothPlastic
+					ch2.Transparency = 5
+					ch2.Parent = parent
+					rnd1.Parent = folder
+					rnd1.CFrame = game.Players.LocalPlayer.Character.Head.CFrame
+					rnd1.Anchored = true
+					rnd1.CanCollide = false
+					--game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,9000,0)
+					wait(0.1)
+					ch2.CFrame = parent.CFrame * CFrame.new(0, 2, 0)
+					wait(0.1)
+			--[[for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+				local a
+				if v:IsA("Part") or v:IsA("Accessory") or v:IsA("Shirt") or v:IsA("Pants") or v:IsA("MeshPart") then
+					a = v:Clone()
+					a.Parent = folder
+					if a:IsA("Part") or a:IsA("MeshPart") then			
+						a.Anchored = true
+						for _, part in pairs(a:GetDescendants()) do
+							if part:IsA("Motor6D") or part:IsA("Weld") then
+								part:Destroy()
+							end
+						end	
+					end
+
+					if a:IsA("Accessory") then
+						a.Handle.Anchored = true
+						for _, part in pairs(a:GetDescendants()) do
+							if part:IsA("Motor6D") or part:IsA("Weld") then
+								part:Destroy()
+							end
+						end	
+					end
+				end
+			end
+					local kd2 = Instance.new('Weld')
+					kd2.Part0 = parent
+					kd2.Part1 = ch2
+					kd2.Parent = parent
+					ch2.Anchored = false
+					wait(0.1)
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = rnd1.CFrame
+					return ch2
+				end
+
+				local dw2 = game.Players.LocalPlayer.Character
+				local rs4 = dw2:WaitForChild('HumanoidRootPart')
+				cs = createRandomizedSphere(rs4)
+			end
+		end
+	})
+
+	local Clipon = false
+
+	Tabs.Main:AddToggle("NoclipToggle", {
+		Title = "Noclip",
+		Description = "Look Ma! I can Phase Through Walls!",
+		Callback = function(Value)
+			if Value == true then
+				Clipon = true
+				game:GetService("RunService").Heartbeat:Connect(function()
+					if Clipon then
+						for a, b in pairs(game.Players:GetChildren()) do
+							for i, v in pairs(b.Character:GetChildren()) do
+								if v:IsA("BasePart") or v:IsA("Part") then
+									v.CanCollide = false
+								end
+								b.Character.Head.BreathPart.CanCollide = false
+							end
+						end
+					end
+				end)
+			else
+				Options.FLINGToggle:SetValue(false)
+				Clipon = false
+			end
+		end
+	})
+
+	Tabs.Main:AddToggle("FLINGToggle", {
+		Title = "FLING",
+		Description = "Fling Thoses Foes",
+		Callback = function(Value)
+			if Value == true then
+				local Spin = Instance.new("BodyAngularVelocity")
+				Spin.Name = "Spinning"
+				Spin.Parent = game.Players.LocalPlayer.Character.Torso
+				Spin.MaxTorque = Vector3.new(0, math.huge, 0)
+				Spin.AngularVelocity = Vector3.new(0,99999,0)
+				Options.NoclipToggle:SetValue(true)
+			else
+				if game.Players.LocalPlayer.Character.Torso:FindFirstChild("Spinning") then
+					game.Players.LocalPlayer.Character.Torso.Spinning:Destroy()
+				end
+			end
+		end
+	})
+
+
+	Tabs.Main:AddToggle("FullBrightToggle", {
+		Title = "Full Bright",
+		Description = "You get the PointLight.. Get it?",
+		Callback = function(Value)
+			if Value then
+				local lgh = Instance.new("PointLight")
+				lgh.Range = math.huge
+				lgh.Brightness = 2.5
+				lgh.Parent = game.Players.LocalPlayer.Character.Head
+			else
+				if game.Players.LocalPlayer.Character:WaitForChild("Head"):FindFirstChild("PointLight") then
+					game.Players.LocalPlayer.Character.Head.PointLight:Destroy()
+				end
+			end
+		end
+	})
+
+	local SSlider = Tabs.Main:AddSlider("SpeedSlider", {
+		Title = "Speed",
+		Description = "Slider that changes ur speed",
+		Default = 16,
+		Min = 16,
+		Max = 42,
+		Rounding = 1,
+		Callback = function(Value)
+			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Value
+		end
+	})
+	local SSlider = Tabs.Main:AddSlider("HHSlider", {
+		Title = "Hip Height Changer",
+		Description = "Slider that changes ur Height",
+		Default = 0,
+		Min = 0.0001,
+		Max = 4.0100,
+		Rounding = 0.1,
+		Callback = function(Value)
+			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").HipHeight = Value
+		end
+	})
+
+	local FOVSlider = Tabs.Main:AddSlider("FOVSlider", {
+		Title = "FOV",
+		Description = "Slider that changes ur FOV",
+		Default = game.Workspace.CurrentCamera.FieldOfView,
+		Min = 70,
+		Max = 120,
+		Rounding = 1,
+		Callback = function(Value)
+			game.Workspace.CurrentCamera.FieldOfView = Value
+		end
+	})]]
+
+--[[
+	
+
+
+
+
+
+
+	local Colorpicker = Tabs.Main:AddColorpicker("Colorpicker", {
+		Title = "Colorpicker",
+		Default = Color3.fromRGB(96, 205, 255)
+	})
+
+	Colorpicker:OnChanged(function()
+		print("Colorpicker changed:", Colorpicker.Value)
+	end)
+
+	Colorpicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
+
+
+
+	local TColorpicker = Tabs.Main:AddColorpicker("TransparencyColorpicker", {
+		Title = "Colorpicker",
+		Description = "but you can change the transparency.",
+		Transparency = 0,
+		Default = Color3.fromRGB(96, 205, 255)
+	})
+
+	TColorpicker:OnChanged(function()
+		print(
+			"TColorpicker changed:", TColorpicker.Value,
+			"Transparency:", TColorpicker.Transparency
+		)
+	end)
+
+
+
+	local Keybind = Tabs.Main:AddKeybind("Keybind", {
+		Title = "KeyBind",
+		Mode = "Toggle", -- Always, Toggle, Hold
+		Default = "LeftControl", -- String as the name of the keybind (MB1, MB2 for mouse buttons)
+
+		-- Occurs when the keybind is clicked, Value is `true`/`false`
+		Callback = function(Value)
+			print("Keybind clicked!", Value)
+		end,
+
+		-- Occurs when the keybind itself is changed, `New` is a KeyCode Enum OR a UserInputType Enum
+		ChangedCallback = function(New)
+			print("Keybind changed!", New)
+		end
+	})
+
+	-- OnClick is only fired when you press the keybind and the mode is Toggle
+	-- Otherwise, you will have to use Keybind:GetState()
+	Keybind:OnClick(function()
+		print("Keybind clicked:", Keybind:GetState())
+	end)
+
+	Keybind:OnChanged(function()
+		print("Keybind changed:", Keybind.Value)
+	end)
+
+	task.spawn(function()
+		while true do
+			wait(1)
+
+			-- example for checking if a keybind is being pressed
+			local state = Keybind:GetState()
+			if state then
+				print("Keybind is being held down")
+			end
+
+			if Fluent.Unloaded then break end
+		end
+	end)
+
+	Keybind:SetValue("MB2", "Toggle") -- Sets keybind to MB2, mode to Hold
+
+
+	local Input = Tabs.Main:AddInput("Input", {
+		Title = "Input",
+		Default = "Default",
+		Placeholder = "Placeholder",
+		Numeric = false, -- Only allows numbers
+		Finished = false, -- Only calls callback when you press enter
+		Callback = function(Value)
+			print("Input changed:", Value)
+		end
+	})
+
+	Input:OnChanged(function()
+		print("Input updated:", Input.Value)
+	end)
+]]--
+
+
+
+
+
+
+
+	--TESTS--
+
+	--[[Tabs.Test:AddButton({
+		Title = "Goto lava Katana",
+		Description = "Goto This Item",
+		Callback = function()
+			for _, Bat in pairs(game.Workspace:GetChildren()) do
+				if Bat.Name == "Bat" and Bat.ProximityPrompt.ObjectText == "Lava Katana" then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Bat.Position)
+					break  -- Exiting the loop once the bat is found
+				end
+			end
+
+		end
+	})]]
+
+	--[[local MultiDropdown = Tabs.Test:AddDropdown("MultiDropdown", {
+		Title = "Dropdown",
+		Description = "You can select multiple values.",
+		Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+		Multi = true,
+		Default = {"seven", "twelve"},
+	})
+
+	MultiDropdown:SetValue({
+		three = true,
+		five = true,
+		seven = false
+	})
+
+	MultiDropdown:OnChanged(function(Value)
+		local Values = {}
+		for Value, State in next, Value do
+			table.insert(Values, Value)
+		end
+		print("Mutlidropdown changed:", table.concat(Values, ", "))
+	end)]]
+
+
+end
+
+
+-- Addons:
+-- SaveManager (Allows you to have a configuration system)
+-- InterfaceManager (Allows you to have a interface managment system)
+
+-- Hand the library over to our managers
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+
+-- Ignore keys that are used by ThemeManager.
+-- (we dont want configs to save themes, do we?)
+SaveManager:IgnoreThemeSettings()
+
+-- You can add indexes of elements the save manager should ignore
+SaveManager:SetIgnoreIndexes({})
+
+-- use case for doing it this way:
+-- a script hub could have themes in a global folder
+-- and game configs in a separate folder per game
+
+InterfaceManager:SetFolder("FluentScriptHub")
+SaveManager:SetFolder("FluentScriptHub/specific-game")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+--[[
+SaveManager:BuildConfigSection(Tabs.Settings)
+]]--
+
+Window:SelectTab(1)
+
+Window:Dialog({
+	Title = "ArcticX",
+	Content = "Script has been loaded.",
+	Buttons = {
+		{
+			Title = "Ok",
+			Callback = function()
+				print("ok")
+			end
+		}
+	}
+})
+-- You can use the SaveManager:LoadAutoloadConfig() to load a config
+-- which has been marked to be one that auto loads!
+SaveManager:LoadAutoloadConfig()
