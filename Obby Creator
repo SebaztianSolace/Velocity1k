@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.2.20 | Build a Boat",
+	Title = "ArcticX | V0.3.20 | Build a Boat",
 	SubTitle = "by narpyyy",
 	TabWidth = 120,
 	Size = UDim2.fromOffset(440, 330),
@@ -260,9 +260,9 @@ SaveManager:LoadAutoloadConfig()
 
 local Autoing = false
 
-game["Run Service"].HeartBeat:Connect(function()
+game["Run Service"].Heartbeat:Connect(function()
 	if Autoing == true then
-		 game.Players.LocalPlayer.HumanoidRootPart.Velocity = Vector3.new(0,30,0)
+		game.Players.LocalPlayer.HumanoidRootPart.Velocity = Vector3.new(0,30,0)
 	end
 end)
 
