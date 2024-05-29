@@ -274,9 +274,9 @@ while true do
 		local Tween = game:GetService("TweenService")
 		--workspace:WaitForChild(game.Players.LocalPlayer.TeamColor .. "Zone"):WaitForChild("VoteLaunchRE"):FireServer()
 		Autoing = true
-		Tween:Create(Main,TweenInfo.new(2),{CFrame = CFrame.new(-45, 15, 275)}):Play()
+		Tween:Create(Main,TweenInfo.new(2),{CFrame = CFrame.new(-45, 55, 275)}):Play()
 		task.wait(2)
-		Tween:Create(Main,TweenInfo.new(60),{CFrame = CFrame.new(-45, 15, 9490)}):Play()
+		Tween:Create(Main,TweenInfo.new(60),{CFrame = CFrame.new(-45, 35, 9490)}):Play()
 		task.wait(35)
 		Tween:Create(Main,TweenInfo.new(2),{CFrame = CFrame.new(-45, -358, 275)}):Play()
 		task.wait(2)
