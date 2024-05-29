@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.1.7 | Build a Boat",
+	Title = "ArcticX | V0.2.15 | Build a Boat",
 	SubTitle = "by narpyyy",
 	TabWidth = 120,
 	Size = UDim2.fromOffset(440, 330),
@@ -16,7 +16,6 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
 	Home = Window:AddTab({ Title = "Home", Icon = "home" }),
 	Main = Window:AddTab({ Title = "Scripts", Icon = "file-code" }),
-	Teleport = Window:AddTab({ Title = "TP2ENEMY", Icon = "chevron-right" }),
 	Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
@@ -38,7 +37,7 @@ do
 			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = -5
 		end
 	})
-	
+
 	Tabs.Home:AddParagraph({
 		Title = "Welcome, ".. game.Players.LocalPlayer.DisplayName,
 		Content = " "
@@ -48,27 +47,10 @@ do
 		Content = " "
 	})
 	Tabs.Home:AddParagraph({
-		Title = "Default USer: ".. game.Players.LocalPlayer.Name,
+		Title = "Default User: ".. game.Players.LocalPlayer.Name,
 		Content = " "
 	})
-	
-	--[[for _, Pig in pairs(game.Workspace:GetDescendants()) do
-		if Pig:IsA("Model") and string.find(Pig.Name:lower(), "enemy") then
-			Tabs.Teleport:AddButton({
-				Title = "Steal Food From " .. Pig.Name,
-				Description = "Teleport To Enemy (Some could be jumpscare placeholders)",
-				Callback = function()
-					for _, ag in pairs(game.Workspace:GetDescendants()) do
-						if ag.Name == Pig.Name then
-							game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = ag.HumanoidRootPart.CFrame
-						end
-					end
-				end
-			})
-		end
-	end]]
 
-	
 	Tabs.Main:AddToggle("Auto-Farm", {
 		Title = "Auto Farm",
 		Description = "Detectable but works",
@@ -88,7 +70,7 @@ do
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Value
 		end
 	})
-	
+
 	local FOVSlider = Tabs.Main:AddSlider("FOVdSlider", {
 		Title = "FOV",
 		Description = "Slider that changes ur FOV",
@@ -279,13 +261,13 @@ SaveManager:LoadAutoloadConfig()
 
 while true do
 	wait(.1)
-	local Char = game.Players.LocalPlayer.Character
 	if at == true then
+		local Char = game.Players.LocalPlayer.Character
 		local Main = Char:WaitForChild("HumanoidRootPart")
 		local Tween = game:GetService("TweenService")
-		Tween:Create(Main,TweenInfo(2),{CFrame = CFrame.new(-45, 470, 275)}):Play()
+		Tween:Create(Main,TweenInfo.new(2),{CFrame = CFrame.new(-45, 470, 275)}):Play()
 		task.wait(2)
-		Tween:Create(Main,TweenInfo(45),{CFrame = CFrame.new(-45, -358, 9490)}):Play()
+		Tween:Create(Main,TweenInfo.new(45),{CFrame = CFrame.new(-45, -358, 9490)}):Play()
 		task.wait(45)
 		game.Players.LocalPlayer.CharacterAdded:Wait()
 	end
