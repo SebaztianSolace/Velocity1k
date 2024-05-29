@@ -3,10 +3,10 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.1.5 | Build a Boat",
+	Title = "ArcticX | V0.1.7 | Build a Boat",
 	SubTitle = "by narpyyy",
 	TabWidth = 120,
-	Size = UDim2.fromOffset(340, 230),
+	Size = UDim2.fromOffset(440, 330),
 	Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
 	Theme = "Amethyst",
 	MinimizeKey = Enum.KeyCode.RightControl -- Used when theres no MinimizeKeybind
@@ -73,7 +73,7 @@ do
 		Title = "Auto Farm",
 		Description = "Detectable but works",
 		Callback = function(Value)
-			at = value
+			at = Value
 		end
 	})
 
