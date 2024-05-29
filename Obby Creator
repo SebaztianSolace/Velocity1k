@@ -57,20 +57,24 @@ do
 
 
 
-	Tabs.Mods:AddButton({
-		Title = "Make all Part(s) Reflect Max",
-		Description = "Mods All Your part(s)",
+	Tabs.Home:AddButton({
+		Title = "Click to Mod part",
+		Description = ":3",
 		Callback = function()
-			for _,Part in pairs(workspace:WaitForChild("Obbies"):WaitForChild(game.Players.LocalPlayer.Name):WaitForChild("Items"):WaitForChild("Parts"):GetChildren()) do
-				local args = {
-					[1] = {
-						[1] = Part
-					},
-					[2] = "Reflectance",
-					[3] = math.huge
-				}
-				game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PaintObject"):InvokeServer(unpack(args))
+			local mouse = game.Players.LocalPlayer:GetMouse()
+			if game:GetService("UserInputService").TouchEnabled then
+				game:GetService("UserInputService").TouchTap:Wait()
+			else
+				mouse.Button1Down:Wait()
 			end
+			local args = {
+				[1] = {
+					[1] = mouse.Target
+				},
+				[2] = "Reflectance",
+				[3] = 99999
+			}
+			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("PaintObject"):InvokeServer(unpack(args))
 			Fluent:Notify({
 				Title = "ArcticX",
 				Content = "Client Sided problems so it won't look like it but it will for other ppl",
@@ -451,12 +455,3 @@ Window:Dialog({
 SaveManager:LoadAutoloadConfig()
 
 allowed = true
-
-
-game["Run Service"].Heartbeat:Connect(function()
-	if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health == 0 then
-		--Options.FELAGToggle:SetValue(false)
-		Options.FullBrightToggle:SetValue(false)
-		Options.GodToggle:SetValue(false)
-	end
-end)
