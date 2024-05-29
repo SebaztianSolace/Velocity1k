@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.2.15 | Build a Boat",
+	Title = "ArcticX | V0.2.20 | Build a Boat",
 	SubTitle = "by narpyyy",
 	TabWidth = 120,
 	Size = UDim2.fromOffset(440, 330),
@@ -37,7 +37,7 @@ do
 			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = -5
 		end
 	})
-
+	
 	Tabs.Home:AddParagraph({
 		Title = "Welcome, ".. game.Players.LocalPlayer.DisplayName,
 		Content = " "
@@ -50,7 +50,7 @@ do
 		Title = "Default User: ".. game.Players.LocalPlayer.Name,
 		Content = " "
 	})
-
+	
 	Tabs.Main:AddToggle("Auto-Farm", {
 		Title = "Auto Farm",
 		Description = "Detectable but works",
@@ -70,7 +70,7 @@ do
 			game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Value
 		end
 	})
-
+	
 	local FOVSlider = Tabs.Main:AddSlider("FOVdSlider", {
 		Title = "FOV",
 		Description = "Slider that changes ur FOV",
@@ -258,6 +258,13 @@ Window:Dialog({
 -- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
 
+local Autoing = false
+
+game["Run Service"].HeartBeat:Connect(function()
+	if Autoing == true then
+		 game.Players.LocalPlayer.HumanoidRootPart.Velocity = Vector3.new(0,30,0)
+	end
+end)
 
 while true do
 	wait(.1)
@@ -265,10 +272,12 @@ while true do
 		local Char = game.Players.LocalPlayer.Character
 		local Main = Char:WaitForChild("HumanoidRootPart")
 		local Tween = game:GetService("TweenService")
-		Tween:Create(Main,TweenInfo.new(2),{CFrame = CFrame.new(-45, 470, 275)}):Play()
-		task.wait(2)
-		Tween:Create(Main,TweenInfo.new(45),{CFrame = CFrame.new(-45, -358, 9490)}):Play()
-		task.wait(45)
+		Autoing = true
+		Tween:Create(Main,TweenInfo(2),{CFrame = CFrame.new(-45, 770, 275)}):Play()
+		task.wait(2.01)
+		Tween:Create(Main,TweenInfo(60),{CFrame = CFrame.new(-45, -358, 9490)}):Play()
+		task.wait(60.1)
+		Autoing = false
 		game.Players.LocalPlayer.CharacterAdded:Wait()
 	end
 end
