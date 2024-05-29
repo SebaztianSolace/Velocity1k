@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.4.6 | Build a Boat",
+	Title = "ArcticX | V0.5.5 | Build a Boat",
 	SubTitle = "by narpyyy",
 	TabWidth = 120,
 	Size = UDim2.fromOffset(440, 330),
@@ -276,8 +276,8 @@ while true do
 		Autoing = true
 		Tween:Create(Main,TweenInfo.new(2),{CFrame = CFrame.new(-45, 55, 275)}):Play()
 		task.wait(2)
-		Tween:Create(Main,TweenInfo.new(60),{CFrame = CFrame.new(-45, 55, 9490)}):Play()
-		task.wait(60)
+		Tween:Create(Main,TweenInfo.new(30),{CFrame = CFrame.new(-45, 55, 9490)}):Play()
+		task.wait(30)
 		Autoing = false
 		game.Players.LocalPlayer.CharacterAdded:Wait()
 	end
