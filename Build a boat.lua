@@ -3,10 +3,10 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.5.1 | Build a Boat",
+	Title = "ArcticX | V0.5.2 | Build a Boat",
 	SubTitle = "by narpyyy",
 	TabWidth = 120,
-	Size = UDim2.fromOffset(440, 530),
+	Size = UDim2.fromOffset(460, 360),
 	Acrylic = false,
 	Theme = "Amethyst",
 	MinimizeKey = Enum.KeyCode.RightControl
@@ -50,7 +50,7 @@ do
 		Title = "Default User: ".. game.Players.LocalPlayer.Name,
 		Content = " "
 	})
-	
+
 	Tabs.Main:AddToggle("Auto-Farm", {
 		Title = "Auto Farm",
 		Description = "Detectable but works",
