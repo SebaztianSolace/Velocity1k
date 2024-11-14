@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "SebastianHub | V0.1.0 | Build a Boat",
+	Title = "SebastianHub | V0.1.1 | Build a Boat",
 	SubTitle = "by _.sebastiansolace._",
 	TabWidth = 120,
 	Size = UDim2.fromOffset(460, 360),
@@ -131,7 +131,7 @@ while true do
 			local Main = Char:WaitForChild("HumanoidRootPart")
 			local Tween = game:GetService("TweenService")
 			Autoing = true
-			Tween:Create(Main, TweenInfo.new(0.1), {CFrame = CFrame.new(-45, 55, 70)}):Play()
+			Tween:Create(Main, TweenInfo.new(0.1), {CFrame = CFrame.new(-45, 55, 1290)}):Play()
 			task.wait(0.1)
 			Tween:Create(Main, TweenInfo.new(tweenSpeed,Enum.EasingStyle.Linear), {CFrame = CFrame.new(-45, 55, 9490)}):Play()
 			task.wait(tweenSpeed)
