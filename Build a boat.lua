@@ -3,8 +3,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-	Title = "ArcticX | V0.5.2 | Build a Boat",
-	SubTitle = "by narpyyy",
+	Title = "SebastianHub | V0.1.0 | Build a Boat",
+	SubTitle = "by _.sebastiansolace._",
 	TabWidth = 120,
 	Size = UDim2.fromOffset(460, 360),
 	Acrylic = false,
@@ -37,7 +37,7 @@ do
 			game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = -5
 		end
 	})
-	
+
 	Tabs.Home:AddParagraph({
 		Title = "Welcome, ".. game.Players.LocalPlayer.DisplayName,
 		Content = " "
@@ -67,15 +67,15 @@ do
 		Multi = false,
 		Callback = function(Value)
 			if Value == "Default" then
-				tweenSpeed = 35
+				tweenSpeed = 32.5
 			elseif Value == "Fast" then
-				tweenSpeed = 15
+				tweenSpeed = 17
 			elseif Value == "Slow" then
-				tweenSpeed = 45
+				tweenSpeed = 38
 			end
 		end
 	})
-	
+
 	local FOVSlider = Tabs.Main:AddSlider("FOVSlider", {
 		Title = "FOV",
 		Description = "Slider that changes your FOV",
@@ -131,9 +131,9 @@ while true do
 			local Main = Char:WaitForChild("HumanoidRootPart")
 			local Tween = game:GetService("TweenService")
 			Autoing = true
-			Tween:Create(Main, TweenInfo.new(0.1), {CFrame = CFrame.new(-45, 55, 275)}):Play()
+			Tween:Create(Main, TweenInfo.new(0.1), {CFrame = CFrame.new(-45, 55, 70)}):Play()
 			task.wait(0.1)
-			Tween:Create(Main, TweenInfo.new(tweenSpeed), {CFrame = CFrame.new(-45, 55, 9490)}):Play()
+			Tween:Create(Main, TweenInfo.new(tweenSpeed,Enum.EasingStyle.Linear), {CFrame = CFrame.new(-45, 55, 9490)}):Play()
 			task.wait(tweenSpeed)
 			Main.CFrame = CFrame.new(-45, -358, 9490)
 			Autoing = false
